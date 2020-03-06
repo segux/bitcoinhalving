@@ -1,0 +1,13 @@
+<mat-card *ngIf="stats$ | async as stats">
+  <mat-card-title-group>
+    <mat-card-title></mat-card-title>
+    <mat-card-subtitle>Subtitle</mat-card-subtitle>
+  </mat-card-title-group>
+  <mat-card-content>
+    <p>{{ stats?.data?.countdowns[0]?.dateTime?.toJSDate() | date:'full' }}</p>
+  </mat-card-content>
+  <mat-card-actions align="start"> </mat-card-actions>
+  <mat-card-footer>
+    Footer
+  </mat-card-footer>
+</mat-card>

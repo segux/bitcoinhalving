@@ -25,7 +25,10 @@
               "apps/bitcoin-halving/src/favicon.ico",
               "apps/bitcoin-halving/src/assets"
             ],
-            "styles": ["apps/bitcoin-halving/src/styles.scss"],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+              "apps/bitcoin-halving/src/styles.scss"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -62,7 +65,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "bitcoin-halving:build"
+            "browserTarget": "bitcoin-halving:build",
+            "ssl": true
           },
           "configurations": {
             "production": {
