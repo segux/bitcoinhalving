@@ -27,7 +27,8 @@
     "help": "nx help",
     "postinstall": "ngcc --properties es2015 browser module main --first-only --create-ivy-entry-points",
     "scully": "scully",
-    "scully:serve": "scully serve"
+    "scully:serve": "scully serve",
+    "deploy:gh-pages": "git subtree push --prefix dist/apps/bitcoin-halving origin gh-pages"
   },
   "private": true,
   "dependencies": {
