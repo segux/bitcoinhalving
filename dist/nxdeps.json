@@ -1,0 +1,943 @@
+{
+  "projectGraph": {
+    "nodes": {
+      "bitcoin-halving-e2e": {
+        "name": "bitcoin-halving-e2e",
+        "type": "e2e",
+        "data": {
+          "root": "apps/bitcoin-halving-e2e",
+          "sourceRoot": "apps/bitcoin-halving-e2e/src",
+          "projectType": "application",
+          "architect": {
+            "e2e": {
+              "builder": "@nrwl/cypress:cypress",
+              "options": {
+                "cypressConfig": "apps/bitcoin-halving-e2e/cypress.json",
+                "tsConfig": "apps/bitcoin-halving-e2e/tsconfig.e2e.json",
+                "devServerTarget": "bitcoin-halving:serve"
+              },
+              "configurations": {
+                "production": {
+                  "devServerTarget": "bitcoin-halving:serve:production"
+                }
+              }
+            },
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "apps/bitcoin-halving-e2e/tsconfig.e2e.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/bitcoin-halving-e2e/**"
+                ]
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/bitcoin-halving-e2e/cypress.json",
+              "ext": ".json",
+              "mtime": 1583524045973.8208
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/src/fixtures/example.json",
+              "ext": ".json",
+              "mtime": 1583524045976.8196
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/src/integration/app.spec.ts",
+              "ext": ".ts",
+              "mtime": 1583524045977.837
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/src/plugins/index.js",
+              "ext": ".js",
+              "mtime": 1583524045978.84
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/src/support/app.po.ts",
+              "ext": ".ts",
+              "mtime": 1583524045979.85
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/src/support/commands.ts",
+              "ext": ".ts",
+              "mtime": 1583524045980.8398
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/src/support/index.ts",
+              "ext": ".ts",
+              "mtime": 1583524045980.8398
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/tsconfig.e2e.json",
+              "ext": ".json",
+              "mtime": 1583524045974.8198
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1583524045975.8208
+            },
+            {
+              "file": "apps/bitcoin-halving-e2e/tslint.json",
+              "ext": ".json",
+              "mtime": 1583524045973.8208
+            }
+          ]
+        }
+      },
+      "bitcoin-halving": {
+        "name": "bitcoin-halving",
+        "type": "app",
+        "data": {
+          "projectType": "application",
+          "schematics": {
+            "@nrwl/angular:component": {
+              "style": "scss"
+            }
+          },
+          "root": "apps/bitcoin-halving",
+          "sourceRoot": "apps/bitcoin-halving/src",
+          "prefix": "bitcoinhalving",
+          "architect": {
+            "build": {
+              "builder": "@angular-devkit/build-angular:browser",
+              "options": {
+                "outputPath": "dist/apps/bitcoin-halving",
+                "index": "apps/bitcoin-halving/src/index.html",
+                "main": "apps/bitcoin-halving/src/main.ts",
+                "polyfills": "apps/bitcoin-halving/src/polyfills.ts",
+                "tsConfig": "apps/bitcoin-halving/tsconfig.app.json",
+                "aot": true,
+                "assets": [
+                  "apps/bitcoin-halving/src/favicon.ico",
+                  "apps/bitcoin-halving/src/assets"
+                ],
+                "styles": [
+                  "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
+                  "apps/bitcoin-halving/src/styles.scss"
+                ],
+                "scripts": []
+              },
+              "configurations": {
+                "production": {
+                  "fileReplacements": [
+                    {
+                      "replace": "apps/bitcoin-halving/src/environments/environment.ts",
+                      "with": "apps/bitcoin-halving/src/environments/environment.prod.ts"
+                    }
+                  ],
+                  "optimization": true,
+                  "outputHashing": "all",
+                  "sourceMap": false,
+                  "extractCss": true,
+                  "namedChunks": false,
+                  "extractLicenses": true,
+                  "vendorChunk": false,
+                  "buildOptimizer": true,
+                  "budgets": [
+                    {
+                      "type": "initial",
+                      "maximumWarning": "2mb",
+                      "maximumError": "5mb"
+                    },
+                    {
+                      "type": "anyComponentStyle",
+                      "maximumWarning": "6kb",
+                      "maximumError": "10kb"
+                    }
+                  ]
+                }
+              }
+            },
+            "serve": {
+              "builder": "@angular-devkit/build-angular:dev-server",
+              "options": {
+                "browserTarget": "bitcoin-halving:build",
+                "ssl": true
+              },
+              "configurations": {
+                "production": {
+                  "browserTarget": "bitcoin-halving:build:production"
+                }
+              }
+            },
+            "extract-i18n": {
+              "builder": "@angular-devkit/build-angular:extract-i18n",
+              "options": {
+                "browserTarget": "bitcoin-halving:build"
+              }
+            },
+            "lint": {
+              "builder": "@angular-devkit/build-angular:tslint",
+              "options": {
+                "tsConfig": [
+                  "apps/bitcoin-halving/tsconfig.app.json",
+                  "apps/bitcoin-halving/tsconfig.spec.json"
+                ],
+                "exclude": [
+                  "**/node_modules/**",
+                  "!apps/bitcoin-halving/**"
+                ]
+              }
+            },
+            "test": {
+              "builder": "@nrwl/jest:jest",
+              "options": {
+                "jestConfig": "apps/bitcoin-halving/jest.config.js",
+                "tsConfig": "apps/bitcoin-halving/tsconfig.spec.json",
+                "passWithNoTests": true,
+                "setupFile": "apps/bitcoin-halving/src/test-setup.ts"
+              }
+            }
+          },
+          "tags": [],
+          "files": [
+            {
+              "file": "apps/bitcoin-halving/browserslist",
+              "ext": "",
+              "mtime": 1583524045943.83
+            },
+            {
+              "file": "apps/bitcoin-halving/jest.config.js",
+              "ext": ".js",
+              "mtime": 1583524045971.8206
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/app-routing.module.ts",
+              "ext": ".ts",
+              "mtime": 1583526393721.344
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/app.component.html",
+              "ext": ".html",
+              "mtime": 1583527002213.172
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/app.component.scss",
+              "ext": ".scss",
+              "mtime": 1583524045967.8206
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/app.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1583524045969.838
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/app.component.ts",
+              "ext": ".ts",
+              "mtime": 1583527022717.1582
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/app.module.ts",
+              "ext": ".ts",
+              "mtime": 1583529683107.5322
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.html",
+              "ext": ".html",
+              "mtime": 1583532213718.4976
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.scss",
+              "ext": ".scss",
+              "mtime": 1583530767840.4165
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.spec.ts",
+              "ext": ".ts",
+              "mtime": 1583530767843.42
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.ts",
+              "ext": ".ts",
+              "mtime": 1583532141336.7173
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/home-routing.module.ts",
+              "ext": ".ts",
+              "mtime": 1583525518974.194
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/home.module.ts",
+              "ext": ".ts",
+              "mtime": 1583531112597.4126
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.html",
+              "ext": ".html",
+              "mtime": 1583525492308.6501
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.scss",
+              "ext": ".scss",
+              "mtime": 1583525492307.648
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.spec.ts",
+              "ext": ".ts",
+              "mtime": 1583525492309.6492
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.ts",
+              "ext": ".ts",
+              "mtime": 1583532179746.2935
+            },
+            {
+              "file": "apps/bitcoin-halving/src/app/home/services/blockchain/blockchain.service.ts",
+              "ext": ".ts",
+              "mtime": 1583531922881.5454
+            },
+            {
+              "file": "apps/bitcoin-halving/src/assets/.gitkeep",
+              "ext": "",
+              "mtime": 1583524045952.8198
+            },
+            {
+              "file": "apps/bitcoin-halving/src/assets/scully-routes.json",
+              "ext": ".json",
+              "mtime": 1583526928539.66
+            },
+            {
+              "file": "apps/bitcoin-halving/src/environments/environment.prod.ts",
+              "ext": ".ts",
+              "mtime": 1583524045958.822
+            },
+            {
+              "file": "apps/bitcoin-halving/src/environments/environment.ts",
+              "ext": ".ts",
+              "mtime": 1583524045959.8206
+            },
+            {
+              "file": "apps/bitcoin-halving/src/favicon.ico",
+              "ext": ".ico",
+              "mtime": 1583524045934.8208
+            },
+            {
+              "file": "apps/bitcoin-halving/src/index.html",
+              "ext": ".html",
+              "mtime": 1583530260644.186
+            },
+            {
+              "file": "apps/bitcoin-halving/src/main.ts",
+              "ext": ".ts",
+              "mtime": 1583524045948.8218
+            },
+            {
+              "file": "apps/bitcoin-halving/src/polyfills.ts",
+              "ext": ".ts",
+              "mtime": 1583524447470.2063
+            },
+            {
+              "file": "apps/bitcoin-halving/src/styles.scss",
+              "ext": ".scss",
+              "mtime": 1583529683109.5132
+            },
+            {
+              "file": "apps/bitcoin-halving/src/test-setup.ts",
+              "ext": ".ts",
+              "mtime": 1583524045972.8342
+            },
+            {
+              "file": "apps/bitcoin-halving/tsconfig.app.json",
+              "ext": ".json",
+              "mtime": 1583524045944.832
+            },
+            {
+              "file": "apps/bitcoin-halving/tsconfig.json",
+              "ext": ".json",
+              "mtime": 1583524045933.822
+            },
+            {
+              "file": "apps/bitcoin-halving/tsconfig.spec.json",
+              "ext": ".json",
+              "mtime": 1583524045970.8335
+            },
+            {
+              "file": "apps/bitcoin-halving/tslint.json",
+              "ext": ".json",
+              "mtime": 1583524045945.8313
+            }
+          ]
+        }
+      },
+      "@angular/animations": {
+        "type": "npm",
+        "name": "@angular/animations",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/cdk": {
+        "type": "npm",
+        "name": "@angular/cdk",
+        "data": {
+          "version": "^9.1.1",
+          "files": []
+        }
+      },
+      "@angular/common": {
+        "type": "npm",
+        "name": "@angular/common",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/compiler": {
+        "type": "npm",
+        "name": "@angular/compiler",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/core": {
+        "type": "npm",
+        "name": "@angular/core",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/forms": {
+        "type": "npm",
+        "name": "@angular/forms",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/material": {
+        "type": "npm",
+        "name": "@angular/material",
+        "data": {
+          "version": "^9.1.1",
+          "files": []
+        }
+      },
+      "@angular/platform-browser": {
+        "type": "npm",
+        "name": "@angular/platform-browser",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/platform-browser-dynamic": {
+        "type": "npm",
+        "name": "@angular/platform-browser-dynamic",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/router": {
+        "type": "npm",
+        "name": "@angular/router",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@nrwl/angular": {
+        "type": "npm",
+        "name": "@nrwl/angular",
+        "data": {
+          "version": "9.0.4",
+          "files": []
+        }
+      },
+      "@scullyio/init": {
+        "type": "npm",
+        "name": "@scullyio/init",
+        "data": {
+          "version": "0.0.23",
+          "files": []
+        }
+      },
+      "@scullyio/ng-lib": {
+        "type": "npm",
+        "name": "@scullyio/ng-lib",
+        "data": {
+          "version": "latest",
+          "files": []
+        }
+      },
+      "@scullyio/scully": {
+        "type": "npm",
+        "name": "@scullyio/scully",
+        "data": {
+          "version": "latest",
+          "files": []
+        }
+      },
+      "core-js": {
+        "type": "npm",
+        "name": "core-js",
+        "data": {
+          "version": "^2.5.4",
+          "files": []
+        }
+      },
+      "rxjs": {
+        "type": "npm",
+        "name": "rxjs",
+        "data": {
+          "version": "~6.5.0",
+          "files": []
+        }
+      },
+      "zone.js": {
+        "type": "npm",
+        "name": "zone.js",
+        "data": {
+          "version": "^0.10.2",
+          "files": []
+        }
+      },
+      "@angular/cli": {
+        "type": "npm",
+        "name": "@angular/cli",
+        "data": {
+          "version": "9.0.1",
+          "files": []
+        }
+      },
+      "@nrwl/workspace": {
+        "type": "npm",
+        "name": "@nrwl/workspace",
+        "data": {
+          "version": "9.0.4",
+          "files": []
+        }
+      },
+      "@types/node": {
+        "type": "npm",
+        "name": "@types/node",
+        "data": {
+          "version": "~8.9.4",
+          "files": []
+        }
+      },
+      "dotenv": {
+        "type": "npm",
+        "name": "dotenv",
+        "data": {
+          "version": "6.2.0",
+          "files": []
+        }
+      },
+      "ts-node": {
+        "type": "npm",
+        "name": "ts-node",
+        "data": {
+          "version": "~7.0.0",
+          "files": []
+        }
+      },
+      "tslint": {
+        "type": "npm",
+        "name": "tslint",
+        "data": {
+          "version": "~5.11.0",
+          "files": []
+        }
+      },
+      "eslint": {
+        "type": "npm",
+        "name": "eslint",
+        "data": {
+          "version": "6.1.0",
+          "files": []
+        }
+      },
+      "typescript": {
+        "type": "npm",
+        "name": "typescript",
+        "data": {
+          "version": "~3.7.4",
+          "files": []
+        }
+      },
+      "prettier": {
+        "type": "npm",
+        "name": "prettier",
+        "data": {
+          "version": "1.18.2",
+          "files": []
+        }
+      },
+      "@angular/compiler-cli": {
+        "type": "npm",
+        "name": "@angular/compiler-cli",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular/language-service": {
+        "type": "npm",
+        "name": "@angular/language-service",
+        "data": {
+          "version": "9.0.0",
+          "files": []
+        }
+      },
+      "@angular-devkit/build-angular": {
+        "type": "npm",
+        "name": "@angular-devkit/build-angular",
+        "data": {
+          "version": "0.900.1",
+          "files": []
+        }
+      },
+      "codelyzer": {
+        "type": "npm",
+        "name": "codelyzer",
+        "data": {
+          "version": "~5.0.1",
+          "files": []
+        }
+      },
+      "jest-preset-angular": {
+        "type": "npm",
+        "name": "jest-preset-angular",
+        "data": {
+          "version": "8.0.0",
+          "files": []
+        }
+      },
+      "@nrwl/jest": {
+        "type": "npm",
+        "name": "@nrwl/jest",
+        "data": {
+          "version": "9.0.4",
+          "files": []
+        }
+      },
+      "jest": {
+        "type": "npm",
+        "name": "jest",
+        "data": {
+          "version": "24.9.0",
+          "files": []
+        }
+      },
+      "@types/jest": {
+        "type": "npm",
+        "name": "@types/jest",
+        "data": {
+          "version": "24.9.1",
+          "files": []
+        }
+      },
+      "ts-jest": {
+        "type": "npm",
+        "name": "ts-jest",
+        "data": {
+          "version": "24.0.0",
+          "files": []
+        }
+      },
+      "cypress": {
+        "type": "npm",
+        "name": "cypress",
+        "data": {
+          "version": "^3.8.2",
+          "files": []
+        }
+      },
+      "@nrwl/cypress": {
+        "type": "npm",
+        "name": "@nrwl/cypress",
+        "data": {
+          "version": "9.0.4",
+          "files": []
+        }
+      }
+    },
+    "dependencies": {
+      "bitcoin-halving-e2e": [
+        {
+          "type": "implicit",
+          "source": "bitcoin-halving-e2e",
+          "target": "bitcoin-halving"
+        }
+      ],
+      "bitcoin-halving": [
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "@angular/core"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "@angular/router"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "@angular/platform-browser"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "@scullyio/ng-lib"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "rxjs"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "@angular/common"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "@angular/platform-browser-dynamic"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "zone.js"
+        },
+        {
+          "type": "static",
+          "source": "bitcoin-halving",
+          "target": "jest-preset-angular"
+        }
+      ]
+    }
+  },
+  "fileMap": {
+    "bitcoin-halving-e2e": [
+      {
+        "file": "apps/bitcoin-halving-e2e/cypress.json",
+        "ext": ".json",
+        "mtime": 1583524045973.8208
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/src/fixtures/example.json",
+        "ext": ".json",
+        "mtime": 1583524045976.8196
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/src/integration/app.spec.ts",
+        "ext": ".ts",
+        "mtime": 1583524045977.837
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/src/plugins/index.js",
+        "ext": ".js",
+        "mtime": 1583524045978.84
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/src/support/app.po.ts",
+        "ext": ".ts",
+        "mtime": 1583524045979.85
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/src/support/commands.ts",
+        "ext": ".ts",
+        "mtime": 1583524045980.8398
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/src/support/index.ts",
+        "ext": ".ts",
+        "mtime": 1583524045980.8398
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/tsconfig.e2e.json",
+        "ext": ".json",
+        "mtime": 1583524045974.8198
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1583524045975.8208
+      },
+      {
+        "file": "apps/bitcoin-halving-e2e/tslint.json",
+        "ext": ".json",
+        "mtime": 1583524045973.8208
+      }
+    ],
+    "bitcoin-halving": [
+      {
+        "file": "apps/bitcoin-halving/browserslist",
+        "ext": "",
+        "mtime": 1583524045943.83
+      },
+      {
+        "file": "apps/bitcoin-halving/jest.config.js",
+        "ext": ".js",
+        "mtime": 1583524045971.8206
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/app-routing.module.ts",
+        "ext": ".ts",
+        "mtime": 1583526393721.344
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/app.component.html",
+        "ext": ".html",
+        "mtime": 1583527002213.172
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/app.component.scss",
+        "ext": ".scss",
+        "mtime": 1583524045967.8206
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/app.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1583524045969.838
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/app.component.ts",
+        "ext": ".ts",
+        "mtime": 1583527022717.1582
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/app.module.ts",
+        "ext": ".ts",
+        "mtime": 1583529683107.5322
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.html",
+        "ext": ".html",
+        "mtime": 1583532213718.4976
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.scss",
+        "ext": ".scss",
+        "mtime": 1583530767840.4165
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.spec.ts",
+        "ext": ".ts",
+        "mtime": 1583530767843.42
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/components/blockchain-stats/blockchain-stats.component.ts",
+        "ext": ".ts",
+        "mtime": 1583532141336.7173
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/home-routing.module.ts",
+        "ext": ".ts",
+        "mtime": 1583525518974.194
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/home.module.ts",
+        "ext": ".ts",
+        "mtime": 1583531112597.4126
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.html",
+        "ext": ".html",
+        "mtime": 1583525492308.6501
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.scss",
+        "ext": ".scss",
+        "mtime": 1583525492307.648
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.spec.ts",
+        "ext": ".ts",
+        "mtime": 1583525492309.6492
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/pages/home/home.page.ts",
+        "ext": ".ts",
+        "mtime": 1583532179746.2935
+      },
+      {
+        "file": "apps/bitcoin-halving/src/app/home/services/blockchain/blockchain.service.ts",
+        "ext": ".ts",
+        "mtime": 1583531922881.5454
+      },
+      {
+        "file": "apps/bitcoin-halving/src/assets/.gitkeep",
+        "ext": "",
+        "mtime": 1583524045952.8198
+      },
+      {
+        "file": "apps/bitcoin-halving/src/assets/scully-routes.json",
+        "ext": ".json",
+        "mtime": 1583526928539.66
+      },
+      {
+        "file": "apps/bitcoin-halving/src/environments/environment.prod.ts",
+        "ext": ".ts",
+        "mtime": 1583524045958.822
+      },
+      {
+        "file": "apps/bitcoin-halving/src/environments/environment.ts",
+        "ext": ".ts",
+        "mtime": 1583524045959.8206
+      },
+      {
+        "file": "apps/bitcoin-halving/src/favicon.ico",
+        "ext": ".ico",
+        "mtime": 1583524045934.8208
+      },
+      {
+        "file": "apps/bitcoin-halving/src/index.html",
+        "ext": ".html",
+        "mtime": 1583530260644.186
+      },
+      {
+        "file": "apps/bitcoin-halving/src/main.ts",
+        "ext": ".ts",
+        "mtime": 1583524045948.8218
+      },
+      {
+        "file": "apps/bitcoin-halving/src/polyfills.ts",
+        "ext": ".ts",
+        "mtime": 1583524447470.2063
+      },
+      {
+        "file": "apps/bitcoin-halving/src/styles.scss",
+        "ext": ".scss",
+        "mtime": 1583529683109.5132
+      },
+      {
+        "file": "apps/bitcoin-halving/src/test-setup.ts",
+        "ext": ".ts",
+        "mtime": 1583524045972.8342
+      },
+      {
+        "file": "apps/bitcoin-halving/tsconfig.app.json",
+        "ext": ".json",
+        "mtime": 1583524045944.832
+      },
+      {
+        "file": "apps/bitcoin-halving/tsconfig.json",
+        "ext": ".json",
+        "mtime": 1583524045933.822
+      },
+      {
+        "file": "apps/bitcoin-halving/tsconfig.spec.json",
+        "ext": ".json",
+        "mtime": 1583524045970.8335
+      },
+      {
+        "file": "apps/bitcoin-halving/tslint.json",
+        "ext": ".json",
+        "mtime": 1583524045945.8313
+      }
+    ]
+  }
+}
